@@ -68,9 +68,10 @@ def doesFileExist(fileName): # Simply tests if a file exists
 userName = input("Enter your name: ")
 agentName = input("Enter the agent's name: ")
 doTraining = input("Do you want the agent to remember this conversation? (Y/N): ")
-doTraining = False
 if doTraining.lower() == "y":
     doTraining = True
+else:
+    doTraining = False
 if doesFileExist(f"{agentName}.mtrx"):
     agent = loadAgent(agentName)
 else:
