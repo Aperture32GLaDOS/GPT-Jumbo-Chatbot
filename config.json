@@ -1,0 +1,6 @@
+{
+  "api-key": "{YOUR-API-KEY}",
+  "max-tokens": 50,
+  "temperature": 1.0,
+  "top-p": 0.9
+}
