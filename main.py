@@ -10,7 +10,7 @@ TEMPERATURE = config_data["temperature"]
 TOP_P = config_data["top-p"]
 
 
-class Agent:
+class Agent: # Agent class which pickle can dump to a file
     def __init__(self, name, userName):
         self.name = name
         self.context = ""
@@ -22,12 +22,12 @@ class Agent:
         pickle.dump(self, file)
         file.close()
 
-    def getLog(self, prompt):
+    def getLog(self, prompt): # Creates a string which is just the context of the agent, plus all of the conversations it has had with the user.
         out = self.context + "\n" + self.conversation + "\n"
         out += f'{self.userName}: {prompt}\n {self.name}: '
         return out
 
-    def getResponse(self, prompt):
+    def getResponse(self, prompt): # Calls the api with all of the required parameters to generate a response
         response = requests.post("https://api.ai21.com/studio/v1/j1-jumbo/complete",
                                  headers={"Authorization": f"Bearer {API_KEY}"},
                                  json={
@@ -43,7 +43,7 @@ class Agent:
 
     def generate(self, prompt, doTraining):
         response = self.getResponse(prompt)
-        if doTraining:
+        if doTraining: # Not really training per se, more akin to memory (everything said in the 'training' mode will be remembered by the agent)
             self.conversation += f'{self.userName}: {prompt}\n{agentName}: {response}'
             self.save()
         return response
@@ -56,7 +56,7 @@ def loadAgent(name):  # Loads an agent object from a file
     return agent
 
 
-def doesFileExist(fileName):
+def doesFileExist(fileName): # Simply tests if a file exists
     try:
         open(fileName, "r").close()
         exists = True
