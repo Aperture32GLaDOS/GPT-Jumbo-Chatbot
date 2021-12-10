@@ -3,7 +3,7 @@ Since ai21 recently made their GPT-Jumbo model public, I thought I would make a 
 
 Usage:
 
-You'll need an ai21 API key; they give them out for free to anyone who has an account. This isn't like openAI's API, which is more locked-down than me in the year 2020. Take care when using the script, though, as they limit you to 10,000 tokens per day. (still better than openAI though)
+You'll need an ai21 API key; they give them out for free to anyone who has an account. Take care when using the script, though, as they limit you to 10,000 tokens per day.
 
 Once you have your API key, replace {YOUR-API-KEY} in config.json with said key. Feel free to modify some of the other parameters if the responses are a bit too predictable (or too random)
 
